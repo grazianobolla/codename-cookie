@@ -2,11 +2,9 @@ extends Node2D
 
 onready var player_movement = $"../PlayerMovement"
 onready var player = get_parent()
-	
-func _ready():
-	position = Vector2(position.x, position.y + (128 * player.device_id))
 
 func _physics_process(_delta):
+	position = Vector2(position.x, 64 + (192 * player.device_id))
 	update()
 
 func _draw():	
