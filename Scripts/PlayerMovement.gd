@@ -11,9 +11,9 @@ export(float) var ROTATION_SPEED = 10
 onready var anim_tree = $"../AnimationTree"
 onready var kinematic_body = $"../"
 onready var model_mesh = $"../Mesh"
+onready var player = get_parent()
 
 #input
-var device_id: int = -1
 var input_data: InputData = InputData.new()
 
 #movement
@@ -22,13 +22,10 @@ var forward_direction: Vector3
 var velocity: Vector3
 var current_speed: float = WALK_SPEED
 
-func _ready():
-	device_id = JoystickManager.assign_aviable_joystick_id()
-
 func _physics_process(delta):
 	#if any player enters a dialog, inputs are locked
 	if DialogSystem.is_active:
-		input_data = InputData.new()
+		input_data.lock()
 
 	_calculate_input()
 	_calculate_movement(delta)
@@ -36,7 +33,7 @@ func _physics_process(delta):
 
 func _input(event):
 	#reads input and updates _input_data accordingly
-	if event.device != device_id:
+	if event.device != player.device_id:
 		return
 
 	if event is InputEventJoypadMotion:

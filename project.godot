@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "InputData",
 "language": "GDScript",
 "path": "res://Scripts/InputData.gd"
+}, {
+"base": "Node",
+"class": "Prop",
+"language": "GDScript",
+"path": "res://Scripts/Prop.gd"
 } ]
 _global_script_class_icons={
-"InputData": ""
+"InputData": "",
+"Prop": ""
 }
 
 [application]
