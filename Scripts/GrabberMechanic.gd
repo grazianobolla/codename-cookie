@@ -4,7 +4,6 @@ export(NodePath) var grabbing_area
 export(NodePath) var prop_origin
 
 onready var player = get_parent()
-
 onready var area: Area = get_node(grabbing_area)
 onready var origin: Spatial = get_node(prop_origin)
 

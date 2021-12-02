@@ -25,10 +25,11 @@ func _ready():
 
 func _input(event):
 	if event is InputEventJoypadButton:
-		if event.button_index == JOY_XBOX_A and event.pressed:
-			btn_pressed_by = event.device
-		elif !event.pressed:
-			btn_pressed_by = -1
+		if event.button_index == JOY_XBOX_A:
+			if event.pressed:
+				btn_pressed_by = event.device
+			else:
+				btn_pressed_by = -1
 
 func _process(delta):
 	_calculate(delta)
@@ -57,6 +58,7 @@ func _calculate(delta):
 #inserts a string into the queue, if the dialog box is open, it will appear as a following message, if the dialog is closed it will be opened
 func get_in_queue(param_text: String, owner: Node):
 	if player == null:
+		print("changed player")
 		player = owner
 
 	queue.push_back(param_text)

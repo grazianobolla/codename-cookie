@@ -5,7 +5,7 @@
 [ext_resource path="res://Resources/Materials/OrangePrototype.tres" type="Material" id=3]
 [ext_resource path="res://Scripts/CameraFollow.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Prop.gd" type="Script" id=5]
-[ext_resource path="res://Scripts/Debug1.gd" type="Script" id=6]
+[ext_resource path="res://Debug1.gd" type="Script" id=6]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.447059, 1, 0, 1 )
