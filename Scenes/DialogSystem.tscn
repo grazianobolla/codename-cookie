@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/DialogSystem.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Textures/button_xbox_a.png" type="Texture" id=2]
+[ext_resource path="res://Resources/default_theme.tres" type="Theme" id=3]
+
+[node name="Panel" type="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -288.0
+margin_top = -144.0
+margin_right = 280.0
+margin_bottom = -24.0
+theme = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = -8.0
+meta_underlined = false
+text = "Is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 568, 120 )
+scale = Vector2( 0.075, 0.075 )
+texture = ExtResource( 2 )
