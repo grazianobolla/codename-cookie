@@ -16,7 +16,7 @@ func _input(event):
 				grab()
 			else:
 				drop()
-	
+
 func grab():
 	if current_object != null:
 		return

@@ -32,7 +32,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-JoystickManager="*res://Scripts/JoystickManager.gd"
+JoystickManager="*res://Scripts/Player/JoystickManager.gd"
 DebugDraw="*res://addons/zylann.debug_draw/debug_draw.gd"
 DialogSystem="*res://Scenes/DialogSystem.tscn"
 

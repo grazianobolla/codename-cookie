@@ -1,13 +1,13 @@
 [gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Models/Walk.anim" type="Animation" id=1]
-[ext_resource path="res://Scripts/PlayerMovement.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Player/PlayerMovement.gd" type="Script" id=2]
 [ext_resource path="res://Models/Jump.anim" type="Animation" id=3]
 [ext_resource path="res://Models/Material.material" type="Material" id=4]
 [ext_resource path="res://Models/Idle.anim" type="Animation" id=5]
-[ext_resource path="res://Scripts/GrabberMechanic.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/MovementDebug.gd" type="Script" id=7]
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/Player/GrabberMechanic.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Player/MovementDebug.gd" type="Script" id=7]
+[ext_resource path="res://Scripts/Player/Player.gd" type="Script" id=8]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "cookie_Mesh"
