@@ -4,7 +4,6 @@ export(NodePath) onready var area = get_node(area) as Area
 export(NodePath) onready var origin = get_node(origin) as Spatial
 
 onready var player = get_parent()
-
 var current_object: Prop = null
 
 func _input(event):
@@ -12,7 +11,7 @@ func _input(event):
 		return
 
 	if event is InputEventJoypadButton:
-		if event.is_action_pressed("x") and event.pressed:
+		if event.is_action_pressed("x"):
 			if current_object == null:
 				grab()
 			else:
