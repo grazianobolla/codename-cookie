@@ -1,11 +1,9 @@
 extends Node
 
-export(NodePath) var grabbing_area
-export(NodePath) var prop_origin
+export(NodePath) onready var area = get_node(area) as Area
+export(NodePath) onready var origin = get_node(origin) as Spatial
 
 onready var player = get_parent()
-onready var area: Area = get_node(grabbing_area)
-onready var origin: Spatial = get_node(prop_origin)
 
 var current_object: Prop = null
 
@@ -14,7 +12,7 @@ func _input(event):
 		return
 
 	if event is InputEventJoypadButton:
-		if event.button_index == JOY_XBOX_X and event.pressed:
+		if event.is_action_pressed("x") and event.pressed:
 			if current_object == null:
 				grab()
 			else:
@@ -24,9 +22,9 @@ func grab():
 	if current_object != null:
 		return
 
-	var arr = area.get_overlapping_bodies()
+	var bodies = area.get_overlapping_bodies()
 
-	for body in arr:
+	for body in bodies:
 		if body.is_in_group("prop"):
 			#disable collisions
 			body.set_collision_mask(0)

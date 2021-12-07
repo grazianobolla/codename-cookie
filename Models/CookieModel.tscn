@@ -46,9 +46,8 @@ bind/5/name = "Feet.R"
 bind/5/bone = -1
 bind/5/pose = Transform( -1.78344, 0.0699314, -0.0343898, -0.0351678, -0.0192234, 1.78469, 0.0695435, 1.78367, 0.0205828, -0.498373, 0.826342, 1.03253 )
 
-[sub_resource type="CylinderShape" id=17]
-radius = 0.386665
-height = 0.463307
+[sub_resource type="BoxShape" id=17]
+extents = Vector3( 0.3, 0.5, 0.2 )
 
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Walk"
@@ -86,7 +85,7 @@ nodes/Walk/position = Vector2( -718.94, 139.75 )
 nodes/WalkSpeed/node = SubResource( 13 )
 nodes/WalkSpeed/position = Vector2( -740, 300 )
 nodes/output/position = Vector2( -80, 200 )
-node_connections = [ "output", 0, "JumpShot", "TimeScale", 0, "Jump", "MoveBlend", 0, "Walk", "MoveBlend", 1, "WalkSpeed", "JumpShot", 0, "MoveBlend", "JumpShot", 1, "TimeScale", "WalkSpeed", 0, "Idle" ]
+node_connections = [ "output", 0, "JumpShot", "WalkSpeed", 0, "Idle", "JumpShot", 0, "MoveBlend", "JumpShot", 1, "TimeScale", "MoveBlend", 0, "Walk", "MoveBlend", 1, "WalkSpeed", "TimeScale", 0, "Jump" ]
 
 [sub_resource type="CapsuleShape" id=16]
 radius = 0.539528
@@ -100,8 +99,8 @@ script = ExtResource( 2 )
 
 [node name="GrabberMechanic" type="Node" parent="."]
 script = ExtResource( 6 )
-grabbing_area = NodePath("../Mesh/GrabbingArea")
-prop_origin = NodePath("../Mesh/GrabbingArea/CollisionShape")
+area = NodePath("../Mesh/GrabbingArea")
+origin = NodePath("../Mesh/GrabbingArea/CollisionShape")
 
 [node name="Mesh" type="Spatial" parent="."]
 
@@ -150,7 +149,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Mesh/GrabbingArea"]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0332448, 0.756932 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0.6 )
 shape = SubResource( 17 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,6 +1,7 @@
 extends Camera
 
-export(NodePath) var scene_path
+export(NodePath) onready var scene = get_node(scene) as Node
+
 export(float) var distance_multiplier = 1
 export(float) var max_distance = 8
 export(float) var min_distance = 5
@@ -10,7 +11,7 @@ export(Vector3) var target_offset = Vector3(0, 1, 0)
 var players = []
 
 func _ready():
-	for node in get_node(scene_path).get_children():
+	for node in scene.get_children():
 		if node.is_in_group("player"):
 			players.push_back(node)
 

@@ -25,7 +25,7 @@ var current_speed: float = WALK_SPEED
 func _physics_process(delta):
 	#if any player enters a dialog, inputs are locked
 	if DialogSystem.is_active:
-		input_data.lock()
+		input_data.zero()
 
 	_calculate_input()
 	_calculate_movement(delta)
@@ -43,8 +43,8 @@ func _input(event):
 			input_data.raw_movement_input.y = event.axis_value
 
 	if event is InputEventJoypadButton:
-		if event.button_index == JOY_XBOX_A:
-			input_data.jump_key = event.pressed
+		input_data.jump_key = event.is_action_pressed("a")
+		
 		if event.button_index == JOY_R2:
 			input_data.run_key = event.pressed
 

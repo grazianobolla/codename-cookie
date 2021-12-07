@@ -4,17 +4,14 @@ signal started()
 signal finished()
 
 export(float) var SPEED = 1
-
 onready var text_label = $RichTextLabel
+
 var text: String = ""
 var char_count: int = 0
 var cooldown: float = 0
 var wait_time: float = 0
 var is_active: bool = false
 var queue = []
-
-var player: Node = null
-var btn_pressed_by = -1
 
 func _ready():
 	#disable scroll bar
@@ -23,14 +20,6 @@ func _ready():
 	#disable the dialog box
 	_de_activate(false)
 
-func _input(event):
-	if event is InputEventJoypadButton:
-		if event.button_index == JOY_XBOX_A:
-			if event.pressed:
-				btn_pressed_by = event.device
-			else:
-				btn_pressed_by = -1
-
 func _process(delta):
 	_calculate(delta)
 
@@ -38,8 +27,7 @@ func _calculate(delta):
 	cooldown += delta
 
 	if char_count < text.length():
-		if btn_pressed_by == player.device_id:
-			btn_pressed_by = -1
+		if Input.is_action_just_pressed("a"):
 			_skip()
 			return
 
@@ -48,19 +36,14 @@ func _calculate(delta):
 			wait_time = SPEED / 1000.0
 			_put_character(char_count)
 	else:
-		if btn_pressed_by == player.device_id:
-			btn_pressed_by = -1
+		if Input.is_action_just_pressed("a"):
 			if !queue.empty():
 				_say()
 			else:
 				_de_activate(true)
 
 #inserts a string into the queue, if the dialog box is open, it will appear as a following message, if the dialog is closed it will be opened
-func get_in_queue(param_text: String, owner: Node):
-	if player == null:
-		print("changed player")
-		player = owner
-
+func get_in_queue(param_text: String):
 	queue.push_back(param_text)
 
 	if !is_active:
@@ -82,7 +65,6 @@ func _activate():
 #deactivates the dialog box
 func _de_activate(send_signal: bool):
 	is_active = false
-	player = null
 	self.hide()
 	set_process(false)
 
